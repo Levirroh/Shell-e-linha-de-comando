@@ -1,5 +1,12 @@
 # Comandos no Shell
 
+## Execução de comandos
+
+- `xargs` : para cada linha de saída de um comando ele vai fazer um comando em seguida que pode ser qualquer um.
+
+
+
+
 ## Redirecionamento de Saída
 
 - `>`: Envia a saída de um comando para um arquivo ou local especificado (exemplo: `ls / > /tmp/saida.txt`). 
@@ -29,6 +36,48 @@
   - **Dica**: Use `head` para rapidamente visualizar o começo de arquivos grandes ou logs.
 - `tail`: Exibe a parte inferior de um arquivo (padrão exibe as últimas 10 linhas).
   - **Dica**: Ideal para monitoramento de logs em tempo real, especialmente se combinado com a opção `-f` (exemplo: `tail -f /var/log/syslog`).
+- `uniq`: Exibe todo o arquivo porém mostra tudo que não repete.
+
+### Exemplo de tail e head:
+
+arquivo data.csv:
+
+Username  |  Identifier | First name | Last name
+booker12  |    9012     |   Rachel   |  Booker
+grey07    |     2070    |   Laura    |   Grey
+johnson81 |     4081    |    Craig   |  Johnson
+jenkins46 |     9346    |    Mary    |   Jenkins
+smith79   |     5079    |    Jamie   |    Smith
+
+root@vbox:~# cat data.csv | tail -n 2
+smith79   |     5079    |    Jamie   |    Smith
+
+`Este possui uma linha em branco`
+
+root@vbox:~# cat data.csv | tail -n 2 | head -n 1
+smith79   |     5079    |    Jamie   |    Smith
+
+`Esta foi retirado a linha em branco com o comando head -n 1` 
+
+### Exemplo com o uniq
+
+arquivo:
+
+     2070    
+     4081    
+     5079    
+     5079    
+    9012     
+     9346    
+
+cat data.csv | cut -d '|' -f2 | sort
+     2070    
+     4081    
+     5079    
+    9012     
+     9346    
+  Identifier 
+
 
 ## Cortando Arquivos
 
@@ -37,7 +86,39 @@
   - `-d`: Define o delimitador que será usado para separar as colunas.
   - **Exemplo**: Para extrair a segunda coluna de um arquivo CSV delimitado por vírgulas, use: `cut -d ',' -f 2 arquivo.csv`.
   - **Dica**: O `cut` é útil quando você precisa extrair ou manipular dados estruturados, como arquivos CSV ou logs com campos delimitados.
+ 
+### Exemplo de cut com -d e -d:
 
+Usando o arquivo data.csv:
+
+Username  |  Identifier | First name | Last name
+booker12  |    9012     |   Rachel   |  Booker
+grey07    |     2070    |   Laura    |   Grey
+johnson81 |     4081    |    Craig   |  Johnson
+jenkins46 |     9346    |    Mary    |   Jenkins
+smith79   |     5079    |    Jamie   |    Smith
+
+Fica:
+
+cat data.csv | cut -d '|' -f2 
+  Identifier 
+    9012     
+     2070    
+     4081    
+     9346    
+     5079    
+
+
+Usando o sort no final para aparecer os números em ordem crescente:
+
+cat data.csv | cut -d '|' -f2 | sort
+     2070    
+     4081    
+     5079    
+    9012     
+     9346    
+  Identifier 
+  
 ### Exemplos
 
 - `ls -lha / | grep s`: Lista diretórios que contêm a letra "s" no diretório raiz (`/`).
@@ -60,6 +141,14 @@
   - **Dica**: Você pode editar esse arquivo para personalizar a mensagem que será exibida para todos os usuários ao acessar a máquina, o que pode ser útil para incluir informações importantes ou notificações.
 
 # Comandos Gerais
+
+## Instalações de Pacotes
+
+- `apt install`: Sincroniza a lista de pacotes disponíveis para instalação com os repositórios configurados no arquivo `/etc/apt
+- `apt install curl`: O comando apt install curl serve para instalar a ferramenta curl no seu sistema. Ele é uma ferramenta de linha de comando que permite transferir dados utilizando diversos protocolos de rede, como HTTP, HTTPS, FTP, entre outros.
+    - Juntamente este link irá inserir no arquivo mencionado tudo que está no link: "curl https://support.staffbase.com/hc/en-us/          article_attachments/360009197031/username.csv > data.csv"
+
+
 
 ## Atualização de Pacotes
 
