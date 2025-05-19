@@ -40,7 +40,6 @@ em um processo podem existir uma ou mais threads com:
 
 cada thread possui sua pilha de execução
 
--- completar
 Processo x Thread:
 
 prrocesso pesado:
@@ -48,7 +47,7 @@ informação global para todos os threads de um processo:
 informação local para cada thread:
 
 registradores | pilha | máscara | TSD
--- fim do completar
+
 
 
 vantagens de threads
@@ -70,7 +69,6 @@ Editor de texto:
 	3. Renderizar o texto.
 
 
---completar
 Implementação de thread:
 	Thread em nível de usuário
 		- Gerenciamento pela aplicação 
@@ -89,7 +87,7 @@ Threads em nível kernel
 	- mas
 		- a transferencia de controle entre threads de um mesmo processo requer mudança para modo kernel
 		- chaveamento de threads = troca de contexto (no entando mais barata que troca de contexto de processo)
---fim do completar
+
 
 Comunicação Inter-processo
 
@@ -126,13 +124,13 @@ seção crítica
 		-  dois processos não podem ser executados, ao memso tempo, em suas seções críticas
 		- cada processo deve solicitar permissão para entrar na seção crítica -> seção de entrada
 		- ao temrinar seção crítica -> seção de saída
---completar
+
+
 Exclusão mútua: nunca dois rocessos em uma seção crítica
 Progresso: nenhum processo, fora de sua seção crítica, pode bloquear outros processos
 espera limitada: nenhum processo deve esperar eternamente para entrar em sua seção crítica
 
 
--- fim do completar
 cenário
 
 editando um processo, o PID tranca o processo para somente ele usar.
@@ -142,6 +140,3 @@ Ao tentar usar ele em outro programa aparece mensagem de erro de que já está e
 
 Caso um processo precisa de algo mas outros processos estão usando o processo fica em estado de inanição.
 
---fim
-Me forneça cenários e maneiras de estudar o assunto, tanto como sites que possuam o conteúdo tanto 
-como perguntas geradas por você mesma. Além disso me passe vídeos altamente recomendados sobre o assunto
